@@ -33,4 +33,6 @@ def create_tables():
     return True
 
 if __name__ == "__main__":
-    create_tables()
+    success = create_tables()
+    if not success:
+        sys.exit(1)

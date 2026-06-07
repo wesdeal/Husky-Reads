@@ -143,7 +143,8 @@ from database.models import User, Book, UserBook
 from database.schemas import UserCreate, UserResponse, UserUpdate, LoginRequest, LoginResponse, UserBookCreate, UserBookUpdate, UserBookResponse
 from database.database import SessionLocal
 
-from db_queries import get_user_by_username, update_user_profile, get_user_books, get_user_book, create_user_book, update_user_book, delete_user_book
+from queries.user_queries import get_user_by_username, update_user_profile
+from queries.book_queries import get_user_books, create_user_book, update_user_book, delete_user_book
 from jwt_utils import create_access_token, get_current_user
 
 # Password hashing setup

@@ -4,6 +4,7 @@ import { useAuth } from "../auth/AuthContext"
 import Navbar from "../components/layout/Navbar"
 import Shelf from "../components/books/Shelf"
 import { useShelfData } from "../hooks/useShelfData"
+import { API } from "../api"
 
 function getInitials(profile) {
   if (profile.full_name) {
@@ -31,7 +32,7 @@ function ProfilePage() {
       setProfile(null)
       return
     }
-    fetch("http://127.0.0.1:8000/user/me", {
+    fetch(`${API}/user/me`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => {
@@ -52,7 +53,7 @@ function ProfilePage() {
   async function saveBio() {
     setSavingBio(true)
     try {
-      const res = await fetch("http://127.0.0.1:8000/user/me", {
+      const res = await fetch(`${API}/user/me`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

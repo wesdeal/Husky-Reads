@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useAuth } from "../../auth/AuthContext"
+import { API } from "../../api"
 
 const SHELF_OPTIONS = [
   { label: "Currently Reading", value: "reading" },
@@ -23,7 +24,7 @@ function BookCard({ bookKey, title, author, coverUrl }) {
     }
     setSaving(true)
     try {
-      await fetch("http://localhost:8000/user/books", {
+      await fetch(`${API}/user/books`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

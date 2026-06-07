@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
+import { API } from "../api"
 
-const BASE = "http://127.0.0.1:8000"
+const BASE = API
 
 async function fetchShelf(token, status) {
   const res = await fetch(`${BASE}/user/books?status=${status}`, {

@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: husky-reads-backend
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: husky-reads-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: ""
+
+  - type: web
+    name: husky-reads-frontend
+    runtime: docker
+    dockerfilePath: ./husky-reads/Dockerfile
+    dockerContext: ./husky-reads
+    envVars:
+      - key: PORT
+        value: "80"
+
+databases:
+  - name: husky-reads-db
+    plan: free
+    databaseName: huskyreads

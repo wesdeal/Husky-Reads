@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Navbar from '../components/layout/Navbar'
+import { API } from '../api'
 
 function SignupPage() {
   const [formData, setFormData] = useState({
@@ -32,7 +33,7 @@ function SignupPage() {
 
     try {
       console.log('Submitting form data:', formData)
-      const response = await fetch("http://localhost:8000/signup", {
+      const response = await fetch(`${API}/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

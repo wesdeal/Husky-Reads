@@ -1,4 +1,5 @@
 import { useContext, createContext, useState, useEffect } from "react";
+import { API } from "../api"
 
 const AuthContext = createContext(null);
 
@@ -27,8 +28,10 @@ export function AuthProvider( {children} ) {
 
     const login = async (formData) => {
 
+        
+
         try {
-            const response = await fetch("http://127.0.0.1:8000/login", {
+            const response = await fetch(`${API}/login`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

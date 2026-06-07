@@ -1,0 +1,10 @@
+[build]
+dockerfile = "Dockerfile"
+# Pass the Railway backend URL at build time so the frontend bundle points to it.
+# Set VITE_API_URL in Railway's environment variables for the frontend service.
+
+[deploy]
+healthcheckPath = "/"
+healthcheckTimeout = 30
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3

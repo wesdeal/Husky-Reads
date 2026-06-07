@@ -4,6 +4,7 @@ import Navbar from "../components/layout/Navbar"
 import Dropdown from "../components/common/Dropdown"
 import BookCard from "../components/books/BookCard"
 import { useAuth } from "../auth/AuthContext"
+import { API } from "../api"
 
 function renderSummary(text) {
   if (!text) return ""
@@ -44,7 +45,7 @@ function BookDetailPage() {
   useEffect(() => {
     async function fetchBookDetails() {
       try {
-        const response = await fetch(`http://localhost:8000/book/${id}`)
+        const response = await fetch(`${API}/book/${id}`)
         const data = await response.json()
         setBook(data)
       } catch (error) {
@@ -60,7 +61,7 @@ function BookDetailPage() {
     if (!token) return
     async function fetchUserBook() {
       try {
-        const res = await fetch("http://localhost:8000/user/books", {
+        const res = await fetch(`${API}/user/books`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         const books = await res.json()
@@ -111,7 +112,7 @@ function BookDetailPage() {
     setRating(stars)
     if (!userBook) return
     try {
-      await fetch(`http://localhost:8000/user/books/${userBook.id}/rating`, {
+      await fetch(`${API}/user/books/${userBook.id}/rating`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -129,7 +130,7 @@ function BookDetailPage() {
       alert("Please log in to add books to your collection.")
       return
     }
-    await fetch("http://localhost:8000/user/books", {
+    await fetch(`${API}/user/books`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -146,7 +147,7 @@ function BookDetailPage() {
     // Re-check shelf so the rating widget appears immediately after adding
     if (token) {
       try {
-        const res = await fetch("http://localhost:8000/user/books", {
+        const res = await fetch(`${API}/user/books`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         const books = await res.json()

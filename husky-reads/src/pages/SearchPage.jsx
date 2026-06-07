@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import Navbar from "../components/layout/Navbar"
 import BookCard from "../components/books/BookCard"
+import { API } from "../api"
 
 function SearchPage() {
   const [query, setQuery] = useState("")
@@ -16,7 +17,7 @@ function SearchPage() {
     setSearched(true)
     try {
       const response = await fetch(
-        `http://localhost:8000/search?q=${encodeURIComponent(query)}&limit=10`
+        `${API}/search?q=${encodeURIComponent(query)}&limit=10`
       )
       const data = await response.json()
       setResults(data)
