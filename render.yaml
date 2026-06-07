@@ -3,7 +3,7 @@ services:
     name: husky-reads-backend
     runtime: docker
     dockerfilePath: ./backend/Dockerfile
-    dockerContext: ./backend
+    dockerContext: .
     envVars:
       - key: DATABASE_URL
         fromDatabase:
