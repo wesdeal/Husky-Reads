@@ -36,7 +36,12 @@ app.add_middleware(
 )
 
 
-""" 
+@app.get("/")
+def root():
+    return {"status": "ok", "message": "HuskyReads API is running"}
+
+
+"""
 ===========================================================================================
 Frontend / OpenLibrary API Endpoints
 ===========================================================================================
