@@ -23,10 +23,10 @@ services:
       - key: PORT
         value: "80"
       - key: VITE_API_URL
-        value: "https://husky-reads-backend.onrender.com"
+        value: "https://husky-reads.onrender.com"
     dockerBuildArgs:
       - key: VITE_API_URL
-        value: "https://husky-reads-backend.onrender.com"
+        value: "https://husky-reads.onrender.com"
 
 databases:
   - name: husky-reads-db
